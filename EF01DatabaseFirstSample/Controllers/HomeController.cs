@@ -18,7 +18,7 @@ namespace EF01DatabaseFirstSample.Controllers
 
         public HomeController()
         {
-            _context = new LibraryEntities(); // Initialize your DbContext
+            _context = new LibraryEntities();
         }
         public ActionResult Home()
         {

@@ -1,0 +1,23 @@
+﻿@model EF01DatabaseFirstSample.Models.MaintainViewModel
+@{
+    ViewBag.Title = "Maintain";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            @Html.Partial("_AuthorsPartial", Model.Authors)
+        </div>
+
+        <div class="col">
+            @Html.Partial("_TypesPartial", Model.Types)
+        </div>
+    </div>
+    <div class="row">
+        @Html.Partial("_BorrowsPartial", Model.Borrows)
+    </div>
+</div>
+<div class="pagination">
+
+</div>
+
