@@ -7,7 +7,7 @@
 <h2>Authors</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create" )
 </p>
 <table class="table">
     <tr>
@@ -30,13 +30,29 @@
                 @Html.DisplayFor(modelItem => item.surname)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.authorId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.authorId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.authorId })
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.authorId }) |*@
+                @Html.ActionLink("Details", "Details", new { id = item.authorId }) 
+                @*@Html.ActionLink("Delete", "Delete", new { id = item.authorId })*@
             </td>
         </tr>
     }
 
 </table>
+<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createModalLabel">Create New Record</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Place the form for creating a new record here -->
+                @Html.Partial("Create") <!-- Use the appropriate partial view for the form -->
+            </div>
+        </div>
+    </div>
+</div>
 
 

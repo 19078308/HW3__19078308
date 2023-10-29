@@ -4,10 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Borrows</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", null, new { @class = "open-modal", data_toggle = "modal", data_target = "#createModal" })
 </p>
 <table class="table">
     <tr>
@@ -26,26 +26,62 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.takenDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.broughtDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.books.name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.students.name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.borrowId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.borrowId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.borrowId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.takenDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.broughtDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.books.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.students.name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.borrowId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.borrowId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.borrowId })
+            </td>
+        </tr>
+    }
 
 </table>
+<!-- Modal for creating a new record -->
+<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createModalLabel">Create New Record</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Place the form for creating a new record here -->
+                @Html.Partial("Create") 
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        // Handle the ActionLink click using the "open-modal" class
+        $(".open-modal").click(function (e) {
+            e.preventDefault(); // Prevent the default link behavior
+
+            // Clear the form fields
+            $("#Create")[0].reset();
+
+            // Show the modal for creating a new record
+            $($(this).data("target")).modal("show");
+        });
+
+        $("#Create").submit(function (e) {
+            e.preventDefault(); // Prevent the default form submission
+
+</script>
