@@ -1,0 +1,19 @@
+﻿@model EF01DatabaseFirstSample.Models.HomeViewModel
+@{
+    ViewBag.Title = "Home";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            @Html.Partial("_StudentsPartial", Model.Students)
+        </div>
+
+        <div class="col">
+            @Html.Partial("_BooksPartial", Model.Books)
+        </div>
+    </div>
+</div>
+<div class="pagination">
+
+</div>
